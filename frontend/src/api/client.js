@@ -19,9 +19,25 @@ client.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Response interceptor — handle 401
+function normalizePosters(obj) {
+  if (!obj || typeof obj !== 'object') return;
+  if (Array.isArray(obj)) {
+    obj.forEach(normalizePosters);
+  } else {
+    if (obj.poster_url && !obj.poster) obj.poster = obj.poster_url;
+    if (obj.poster && !obj.poster_url) obj.poster_url = obj.poster;
+    Object.values(obj).forEach(val => {
+      if (val && typeof val === 'object') normalizePosters(val);
+    });
+  }
+}
+
+// Response interceptor — normalize posters & handle 401
 client.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    if (response.data) normalizePosters(response.data);
+    return response;
+  },
   (error) => {
     if (error.response && error.response.status === 401) {
       localStorage.removeItem('token');

@@ -69,7 +69,8 @@ export default function MovieModal({ movie, onClose, onAddToTier }) {
       ? movie.actors.split(',').map((a) => a.trim())
       : movie.actors
     : [];
-  const posterUrl = movie.poster && movie.poster !== 'N/A' ? movie.poster : null;
+  const rawPoster = movie.poster || movie.poster_url;
+  const posterUrl = rawPoster && rawPoster !== 'N/A' ? rawPoster : null;
 
   return (
     <AnimatePresence>
@@ -261,8 +262,8 @@ export default function MovieModal({ movie, onClose, onAddToTier }) {
                         className="flex-shrink-0 w-20 group cursor-pointer"
                       >
                         <div className="aspect-[2/3] rounded-xl overflow-hidden border border-white/10 mb-1.5 transition-transform duration-300 group-hover:scale-105">
-                          {sm.poster && sm.poster !== 'N/A' ? (
-                            <img src={sm.poster} alt={sm.title} className="w-full h-full object-cover" />
+                          {(sm.poster || sm.poster_url) && (sm.poster || sm.poster_url) !== 'N/A' ? (
+                            <img src={sm.poster || sm.poster_url} alt={sm.title} className="w-full h-full object-cover" />
                           ) : (
                             <div className="w-full h-full bg-navy-700 flex items-center justify-center">
                               <ImageOff className="w-5 h-5 text-gray-600" />

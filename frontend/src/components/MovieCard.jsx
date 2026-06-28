@@ -26,7 +26,8 @@ export default function MovieCard({ movie, onAddToTier, onSelect, index = 0, com
   const tier = getRatingTier(movie.imdb_rating || movie.rating);
   const tierStyle = tier ? tierColors[tier] : null;
 
-  const posterUrl = movie.poster && movie.poster !== 'N/A' ? movie.poster : null;
+  const rawPoster = movie.poster || movie.poster_url;
+  const posterUrl = rawPoster && rawPoster !== 'N/A' ? rawPoster : null;
 
   return (
     <motion.div

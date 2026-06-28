@@ -407,8 +407,8 @@ export default function Tiers() {
             <DragOverlay>
               {activeMovie ? (
                 <div className="w-28 h-40 rounded-xl overflow-hidden border-2 border-purple-500 shadow-2xl shadow-purple-500/30 opacity-90">
-                  {activeMovie.poster && activeMovie.poster !== 'N/A' ? (
-                    <img src={activeMovie.poster} alt="" className="w-full h-full object-cover" />
+                  {(activeMovie.poster || activeMovie.poster_url) && (activeMovie.poster || activeMovie.poster_url) !== 'N/A' ? (
+                    <img src={activeMovie.poster || activeMovie.poster_url} alt="" className="w-full h-full object-cover" />
                   ) : (
                     <div className="w-full h-full bg-navy-700 flex items-center justify-center">
                       <ImageOff className="w-6 h-6 text-gray-600" />
@@ -448,8 +448,8 @@ export default function Tiers() {
                     onClick={() => setSelectedMovie(movie)}
                   >
                     <div className="w-10 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-navy-700">
-                      {movie.poster && movie.poster !== 'N/A' ? (
-                        <img src={movie.poster} alt="" className="w-full h-full object-cover" />
+                      {(movie.poster || movie.poster_url) && (movie.poster || movie.poster_url) !== 'N/A' ? (
+                        <img src={movie.poster || movie.poster_url} alt="" className="w-full h-full object-cover" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
                           <ImageOff className="w-4 h-4 text-gray-600" />

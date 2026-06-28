@@ -65,7 +65,8 @@ function SortableMovieItem({ movie, tier, onRemove }) {
     zIndex: isDragging ? 50 : 1,
   };
 
-  const posterUrl = movie.poster && movie.poster !== 'N/A' ? movie.poster : null;
+  const rawPoster = movie.poster || movie.poster_url;
+  const posterUrl = rawPoster && rawPoster !== 'N/A' ? rawPoster : null;
 
   return (
     <div

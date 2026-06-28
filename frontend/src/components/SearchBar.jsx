@@ -196,8 +196,8 @@ export default function SearchBar({ onResults, onSelect, placeholder = 'Search m
                 className="w-full flex items-center gap-3 px-4 py-3 hover:bg-white/5 transition-colors text-left border-b border-white/5 last:border-0"
               >
                 <div className="w-10 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-navy-700">
-                  {movie.poster && movie.poster !== 'N/A' ? (
-                    <img src={movie.poster} alt="" className="w-full h-full object-cover" />
+                  {(movie.poster || movie.poster_url) && (movie.poster || movie.poster_url) !== 'N/A' ? (
+                    <img src={movie.poster || movie.poster_url} alt="" className="w-full h-full object-cover" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-gray-600 text-xs">N/A</div>
                   )}

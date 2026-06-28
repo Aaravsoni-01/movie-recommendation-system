@@ -39,9 +39,9 @@ const Dashboard = () => {
           { name: 'D', count: 10 }
         ],
         recent_ratings: [
-          { id: 1, title: 'Inception', tier: 'S', date: '2 days ago', poster_url: 'https://via.placeholder.com/150x225.png?text=Inception' },
-          { id: 2, title: 'Interstellar', tier: 'S', date: '3 days ago', poster_url: 'https://via.placeholder.com/150x225.png?text=Interstellar' },
-          { id: 3, title: 'The Matrix', tier: 'A', date: '5 days ago', poster_url: 'https://via.placeholder.com/150x225.png?text=The+Matrix' },
+          { id: 1, title: 'Inception', tier: 'S', date: '2 days ago', poster_url: 'https://placehold.co/150x225/1a1a2e/ffffff.png?text=Inception' },
+          { id: 2, title: 'Interstellar', tier: 'S', date: '3 days ago', poster_url: 'https://placehold.co/150x225/1a1a2e/ffffff.png?text=Interstellar' },
+          { id: 3, title: 'The Matrix', tier: 'A', date: '5 days ago', poster_url: 'https://placehold.co/150x225/1a1a2e/ffffff.png?text=The+Matrix' },
         ]
       });
     }, 1000);
@@ -119,7 +119,7 @@ const Dashboard = () => {
           <div className="space-y-4">
             {stats.recent_ratings.map((item) => (
               <div key={item.id} className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 transition-colors">
-                <img src={item.poster_url} alt={item.title} className="w-16 h-24 object-cover rounded-lg shadow-md" />
+                <img src={item.poster_url || item.poster} alt={item.title} className="w-16 h-24 object-cover rounded-lg shadow-md" />
                 <div className="flex-1">
                   <h4 className="text-xl font-bold text-white">{item.title}</h4>
                   <p className="text-gray-400 text-sm mt-1">{item.date}</p>
