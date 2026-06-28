@@ -13,7 +13,7 @@ from backend.services.auth_service import get_password_hash
 
 def _poster(title: str) -> str:
     """Generate a placeholder poster URL from a movie title."""
-    return f"https://via.placeholder.com/300x450.png?text={quote(title)}"
+    return f"https://placehold.co/300x450/1a1a2e/ffffff.png?text={quote(title)}"
 
 
 # ---------------------------------------------------------------------------
