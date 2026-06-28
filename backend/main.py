@@ -31,12 +31,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(auth.router, prefix="/auth", tags=["Auth"])
-app.include_router(movies.router, prefix="/movies", tags=["Movies"])
-app.include_router(tiers.router, prefix="/tiers", tags=["Tiers"])
-app.include_router(studios.router, prefix="/studios", tags=["Studios"])
-app.include_router(recommendations.router, prefix="/recommendations", tags=["Recommendations"])
-app.include_router(analytics.router, prefix="/analytics", tags=["Analytics"])
+app.include_router(auth.router)
+app.include_router(movies.router)
+app.include_router(tiers.router)
+app.include_router(studios.router)
+app.include_router(recommendations.router)
+app.include_router(analytics.router)
 
 @app.get("/")
 def health_check():
